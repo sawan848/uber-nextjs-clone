@@ -1,13 +1,17 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 import mapboxgl from "!mapbox-gl";
+import Link from 'next/link';
 
 const Search = () => {
   return (
     <Wrapper>
       {/* Button Container */}
       <ButtonContainer>
+          
+      <Link href='/'>
         <BackButton src="https://img.icons8.com/ios-filled/50/000000/left.png" />
+        </Link>
       </ButtonContainer>
       {/* Input Container */}
       <InputContainer>
@@ -34,6 +38,9 @@ const Search = () => {
         Saved Places
       </SavedPlaces>
       {/* confirm Location */}
+      <ConfirmButtonContainer>
+          Confirm Location
+      </ConfirmButtonContainer>
     </Wrapper>
   );
 };
@@ -51,6 +58,11 @@ const InputContainer = tw.div`
 const InputBoxes = tw.div`
 flex flex-col flex-1
 `;
+const ConfirmButtonContainer = tw.div`
+ bg-black text-white text-2xl
+ text-center mt-2 mx-4 px-4 py-3
+ cursor-pointer
+`;
 const Input = tw.input`
 h-10 bg-gray-200  my-2 
 rounded-2 p-2 outline-none border-none
@@ -63,7 +75,7 @@ const FromToIcons = tw.div`
 w-10 flex flex-col mr-2 items-center
 `;
 const BackButton = tw.img`
-h-12
+h-12 cursor-pointer
 `;
 const Circle = tw.img`
 h-2.5
