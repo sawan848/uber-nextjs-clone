@@ -1,9 +1,13 @@
-import React from "react";
+import { useEffect ,useState} from "react";
 import tw from "tailwind-styled-components";
 import mapboxgl from "!mapbox-gl";
 import Link from 'next/link';
 
 const Search = () => {
+  const [pickup, setPickup] = useState('')
+  const [dropoff, setDropoff] = useState('')
+
+
   return (
     <Wrapper>
       {/* Button Container */}
@@ -21,8 +25,8 @@ const Search = () => {
           <Square src="https://img.icons8.com/windows/50/000000/square-full.png" />
         </FromToIcons>
         <InputBoxes>
-          <Input placeholder="Enter pickup location" />
-          <Input placeholder="Where to go" />
+          <Input placeholder="Enter pickup location"   value={pickup} onChange={(e)=>{setPickup(e.target.value)}}/>
+          <Input placeholder="Where to go" value={dropoff}  onChange={(e)=>{setDropoff(e.target.value)}}/>
         </InputBoxes>
         <PlusIcon
           src="https://img.icons8.com/ios/50/000000/plus-math.png
@@ -38,9 +42,17 @@ const Search = () => {
         Saved Places
       </SavedPlaces>
       {/* confirm Location */}
+      <Link href={{
+        pathname:"/confirm",
+        query:{
+          pickup:pickup,
+          dropoff:dropoff
+        }
+      }}>
       <ConfirmButtonContainer>
           Confirm Location
       </ConfirmButtonContainer>
+      </Link>
     </Wrapper>
   );
 };
